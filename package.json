@@ -1,0 +1,23 @@
+{
+  "name": "boringprojects",
+  "version": "1.0.0",
+  "description": "a mindless boring projects",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Abhijit Burman",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "cluster": "^0.7.7",
+    "connect-timeout": "^1.9.0",
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "os": "^0.1.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.8",
+    "typescript": "^5.4.5"
+  }
+}
