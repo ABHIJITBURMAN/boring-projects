@@ -2,24 +2,23 @@ name: Docker Image CI
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
   pull_request:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
-
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Login Dockerhub
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
-      run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
-    - name: Build the Docker image
-      run: docker build -t boring-projects .
-    - name: Push to Dockerhub
-      run: docker push abhijitb1260/boring-projects:latest
+      - name: Checkout code
+        uses: actions/checkout@v2
+      
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
+
+      - name: Build Docker image
+        run: docker build -t abhijitb1260/boring-projects .
+
+      - name: Push Docker image
+        run: docker push abhijitb1260/boring-projects:latest
