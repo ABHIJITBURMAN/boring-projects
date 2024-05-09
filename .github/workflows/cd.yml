@@ -1,0 +1,21 @@
+name: CD Pipeline
+on:
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
+
+jobs:
+  build:
+    runs-on: self-hosted
+
+    steps:
+      - name: Pull Dockerimage 
+        uses: sudo docker pull abhijitb1260/boring-projects:latest
+      
+      - name: Delete Old docker container
+        run: sudo docker rm -f boring-projects-container || true
+
+      - name: Run Docker container
+        run: sudo docker run -d -p 3000:3000 --name boring-projects-container abhijitb1260/boring-projects .
+ 
