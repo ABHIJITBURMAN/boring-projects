@@ -10,6 +10,7 @@ app.use(timeout(5 * 60 * 1000));
 app.use(cors());
 app.options("*", cors());
 
+// router path
 app.use("/v1", routes);
 
 module.exports = app;
