@@ -12,10 +12,10 @@ jobs:
 
     steps:
       - name: Pull Docker image
-        uses: sudo docker pull abhijitb1260/boring-projects:latest
+        run: docker pull abhijitb1260/boring-projects:latest
 
       - name: Delete Old Docker container
-        run: sudo docker rm -f boring-projects-container || true
+        run: docker rm -f boring-projects-container || true
 
       - name: Run Docker container
-        run: sudo docker run -d -p 3000:3000 --name boring-projects-container abhijitb1260/boring-projects .
+        run: docker run -d -p 3000:3000 --name boring-projects-container abhijitb1260/boring-projects
