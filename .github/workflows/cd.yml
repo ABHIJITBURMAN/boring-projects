@@ -11,7 +11,7 @@ jobs:
     runs-on: self-hosted
 
     steps:
-      - name: Pull Dockerimage
+      - name: Pull Docker image
         uses: sudo docker pull abhijitb1260/boring-projects:latest
 
       - name: Delete Old docker container
